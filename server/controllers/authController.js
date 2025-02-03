@@ -6,37 +6,28 @@ const nodemailer = require("nodemailer");
 const prisma = new PrismaClient();
 
 async function handleSignUp(req, res) {
-  console.log("Dwd")
   try {
     const { name, email, role, password } = req.body;
     console.log(req.body)
-    
-    // Checking if email or phone already exists in the database
     const existingUser = await prisma.user.findUnique({ where: { email } });
-      
     if (existingUser) {
       return res.status(400).json({ message: "Email already exists" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user record
     const user = await prisma.user.create({
       data: {
         name,
         email,
         role,
         password: hashedPassword,
-
       },
     });
-
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
     console.log(err); // Log error to understand the issue
     res.status(400).json({ message: "SignUp Failed" });
   }
 }
-
 async function handleLogin(req, res) {
   try {
     const { email, password } = req.body;
@@ -50,13 +41,12 @@ async function handleLogin(req, res) {
     if (!verifyPass) {
       return res.status(400).json({ message: "Incorrect Password" });
     }
-
+console.log( process.env.SECRET)
     const token = jwt.sign(
       { email: user.email, _id: user.id },
       process.env.SECRET,
       { expiresIn: "24h" }
     );
-
     res.status(200).json({
       message: "Logged In successfully",
       token: token,
@@ -68,22 +58,18 @@ async function handleLogin(req, res) {
     res.status(400).json({ message: "Login Failed" });
   }
 }
-
 async function handleForgetPassword(req, res) {
   const { email } = req.body;
   console.log(email)
   const user = await prisma.user.findUnique({ where: { email } });
-
   if (!user) {
     return res.status(400).json({ message: "User Not Found" });
   }
-
+console.log(process.env.SECRET)
   const token = jwt.sign({ email: user.email }, process.env.SECRET, {
     expiresIn: "10m",
   });
-
   const link = `http://localhost:5176/reset-password?token=${token}`;
-
   const transport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
@@ -93,7 +79,6 @@ async function handleForgetPassword(req, res) {
       pass: process.env.PASSWORD,
     },
   });
-
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
@@ -101,7 +86,6 @@ async function handleForgetPassword(req, res) {
     text: `
     <!doctype html>
     <html lang="en-US">
-    
     <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <title>Reset Password Email Template</title>
@@ -110,7 +94,6 @@ async function handleForgetPassword(req, res) {
       a:hover {text-decoration: underline !important;}
     </style>
     </head>
-    
     <body marginheight="0" topmargin="0" marginwidth="0" style="margin: 0px; background-color: #f2f3f8;" leftmargin="0">
     <!--100% body table-->
     <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8"
@@ -230,8 +213,6 @@ async function handleForgetPassword(req, res) {
 async function handleResetPassword(req, res) {
   const { token } = req.query;
   const { password } = req.body;
-console.log(password)
-console.log(token)
 
   if (token) {
     try {
@@ -253,7 +234,6 @@ console.log(token)
     }
     
   } else {
-    console.log("adsd")
     return res.status(400).json({ message: "Invalid token" });
   }
 }
