@@ -1,20 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function DashboardContent() {
-  const initialAlerts = [
+  const [isdbo, setdbo] = useState(false);
+  const [alerts, setAlerts] = useState([
     { timestamp: '2024-10-30 06:21:45', tipo: 'Tipo1', descripcion: 'Descripción de alerta 1' },
     { timestamp: '2024-10-30 06:48:35', tipo: 'Tipo2', descripcion: 'Descripción de alerta 2' },
     { timestamp: '2024-10-30 07:11:06', tipo: 'Tipo3', descripcion: 'Descripción de alerta 3' },
     { timestamp: '2024-10-30 07:15:25', tipo: 'Tipo4', descripcion: 'Descripción de alerta 4' },
     { timestamp: '2024-10-30 07:18:36', tipo: 'Tipo5', descripcion: 'Descripción de alerta 5' },
     { timestamp: '2024-10-30 07:21:49', tipo: 'Tipo6', descripcion: 'Descripción de alerta 6' },
-  ];
-
-  const [isdbo, setdbo] = useState(false);
-  const [alerts, setAlerts] = useState(initialAlerts);
+  ]);
+  
   const [sortConfig, setSortConfig] = useState({ key: '', direction: 'ascending' });
 
-  const toggledbo = () => setdbo(!isdbo);
+  useEffect(() => {
+    toast.success("Welcome to the Dashboard!", {
+      position: "top-right",
+      autoClose: 2000,
+    });
+  }, []);
 
   const sortData = (key) => {
     const direction =
@@ -55,7 +60,7 @@ export default function DashboardContent() {
           <p className="text-sm md:text-lg font-bold text-black">dbo.Alertas</p>
           <span
             className={`material-symbols-outlined text-lg md:text-xl cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform`}
-            onClick={toggledbo}
+            onClick={() => setdbo(!isdbo)}
           >
             keyboard_arrow_down
           </span>
@@ -64,7 +69,7 @@ export default function DashboardContent() {
         {!isdbo && (
           <table className="table-auto w-full mt-4 text-left border-collapse">
             <thead className="bg-blue-570 text-white  ">
-              <tr className=' '>
+              <tr>
                 <th
                   className="p-2 md:p-3 text-sm md:text-base font-semibold cursor-pointer rounded-tl-lg"
                   onClick={() => sortData('timestamp')}
@@ -83,7 +88,7 @@ export default function DashboardContent() {
                   className="p-2 md:p-3 text-sm md:text-base font-semibold cursor-pointer"
                   onClick={() => sortData('tipo')}
                 >
-                  Tipo Alerta
+                  Tipo
                   <div className={`inline-block ml-1 ${getArrowClass('tipo')}`}>
                     <span className="material-symbols-outlined text-xs">
                       keyboard_arrow_up
@@ -94,11 +99,11 @@ export default function DashboardContent() {
                   </div>
                 </th>
                 <th
-                  className="p-2 md:p-3 text-sm md:text-base rounded-tr-lg font-semibold cursor-pointer"
+                  className="p-2 md:p-3 text-sm md:text-base font-semibold cursor-pointer"
                   onClick={() => sortData('descripcion')}
                 >
                   Descripción
-                  <div className={`inline-block ml-1   ${getArrowClass('descripcion')}`}>
+                  <div className={`inline-block ml-1 ${getArrowClass('descripcion')}`}>
                     <span className="material-symbols-outlined text-xs">
                       keyboard_arrow_up
                     </span>
@@ -111,21 +116,10 @@ export default function DashboardContent() {
             </thead>
             <tbody>
               {alerts.map((alert, index) => (
-                <tr
-                  key={index}
-                  className={`${
-                    index % 2 === 1 ? 'bg-blue-50' : 'bg-white'
-                  } border-[.6px] border-gray-300`}
-                >
-                  <td className="p-2 md:p-3 text-xs md:text-[13px] font-semibold text-gray-700">
-                    {alert.timestamp}
-                  </td>
-                  <td className="p-2 md:p-3 text-xs md:text-[13px] font-semibold text-gray-700">
-                    {alert.tipo}
-                  </td>
-                  <td className="p-2 md:p-3 text-xs md:text-[13px] font-semibold text-gray-700">
-                    {alert.descripcion}
-                  </td>
+                <tr key={index} className="border-t hover:bg-gray-100">
+                  <td className="p-2 md:p-3 text-sm md:text-base">{alert.timestamp}</td>
+                  <td className="p-2 md:p-3 text-sm md:text-base">{alert.tipo}</td>
+                  <td className="p-2 md:p-3 text-sm md:text-base">{alert.descripcion}</td>
                 </tr>
               ))}
             </tbody>

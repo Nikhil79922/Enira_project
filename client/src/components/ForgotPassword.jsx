@@ -23,22 +23,15 @@ export default function ForgotPassword() {
 
   return (
     <div className="flex h-screen bg-white">
-      {/* Left Side - Image */}
       <div className="w-1/2 hidden md:flex items-center justify-center p-6">
         <img src={sideImage} alt="Side Image" className="w-full h-auto object-cover rounded-lg" />
       </div>
 
-      {/* Right Side - Forgot Password Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center relative">
         <div className="w-full max-w-md p-6">
-          {/* Logo */}
           <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4" />
-
-          {/* Heading */}
           <h1 className="text-2xl font-bold text-gray-800">Forgot Password?</h1>
           <p className="text-sm text-gray-600 mb-4">Enter your email to receive a password reset link.</p>
-
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"

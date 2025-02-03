@@ -1,8 +1,9 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import sideImage from "../assets/sideImage.jpg";
 import logo from "../assets/companyLogo.jpg";
@@ -22,31 +23,39 @@ export default function LoginPage({ setIsAuthenticated }) {
     setLoading(true);
     try {
       const response = await axios.post("http://localhost:8000/auth/login", data);
-      console.log(response.data); // Debugging: Check the response data
 
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", response.data.token);
-        setIsAuthenticated(true); // Update authentication state
-        navigate("/dashboard"); // Redirect after successful login
+        setIsAuthenticated(true);
+
+        // Show success toast and navigate to dashboard
+        toast.success("Login successful!", {
+          position: "top-right",
+          autoClose: 1500,
+          onClose: () => navigate("/dashboard"),
+        });
       } else {
-        alert("Login failed. Invalid credentials.");
+        toast.error("Login failed. Invalid credentials.");
       }
     } catch (error) {
-      alert(error.response?.data?.message || "Login failed. Please try again.");
+      toast.error(error.response?.data?.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   const handleForgotPassword = () => {
-    navigate("/forgot-password"); // Navigate to Forgot Password page
+    navigate("/forgot-password");
   };
 
   return (
     <div className="flex h-screen bg-white">
+      {/* Toast Notifications */}
+      <ToastContainer />
+
       {/* Left Side - Image */}
       <div className="w-1/2 hidden md:flex items-center justify-center p-6">
-        <img src={sideImage} alt="Side Image" className="w-full h-auto object-cover rounded-lg" />
+        <img src={sideImage} alt="Side" className="w-full h-auto object-cover rounded-lg" />
       </div>
 
       {/* Right Side - Login Form */}
@@ -123,7 +132,7 @@ export default function LoginPage({ setIsAuthenticated }) {
           </form>
         </div>
 
-        {/* Footer - Fixed at the bottom */}
+        {/* Footer */}
         <footer className="absolute bottom-4 w-full text-center">
           <p className="text-xs text-gray-400">© 2025 Enira Lean Automation.</p>
         </footer>

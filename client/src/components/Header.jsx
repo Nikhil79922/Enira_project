@@ -10,7 +10,7 @@ export default function Header() {
   const {
     register,
     handleSubmit,
-    reset, // Use reset to clear the form fields
+    reset,
     watch,
     formState: { errors },
   } = useForm();
@@ -31,27 +31,18 @@ export default function Header() {
       const response = await axios.post("http://localhost:8000/auth/signup", info);
       console.log("User Registered:", response.data);
 
-      // Set the success message and show the pop-up
       setIsRegistered(true);
 
-      // Close the form after successful registration
       setIsFormOpen(false);
 
-      // Clear the form inputs
       reset();
-
-      // Close the dropdown menu
       setIsDropdownOpen(false);
-
-      // Hide the success message after 3 seconds
       setTimeout(() => setIsRegistered(false), 3000);
 
     } catch (error) {
-      console.log(error);
       console.error("Error registering user:", error);
     }
   };
-
   return (
     <header className="flex items-center justify-between h-[73px] border-b-[0.9px] border-gray-300 bg-gray-200 w-[84.5vw]">
       <div className="flex h-[73px] items-center ">
@@ -100,13 +91,10 @@ export default function Header() {
           )}
         </div>
       </div>
-
-      {/* Form to Add New User */}
       {isFormOpen && (
         <div className="absolute top-16 right-5 bg-white p-5 rounded-md border border-gray-300 shadow-lg w-[300px]">
           <h2 className="text-xl mb-4 font-bold">Register New User</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* Name Field */}
             <div className="mb-3">
               <label htmlFor="name" className="block text-sm font-semibold">
                 Name
@@ -119,8 +107,6 @@ export default function Header() {
               />
               {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
             </div>
-
-            {/* Email Field */}
             <div className="mb-3">
               <label htmlFor="email" className="block text-sm font-semibold">
                 Email
@@ -133,8 +119,6 @@ export default function Header() {
               />
               {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
             </div>
-
-            {/* Password Field */}
             <div className="mb-3">
               <label htmlFor="password" className="block text-sm font-semibold">
                 Password
@@ -158,8 +142,6 @@ export default function Header() {
               />
               {errors.password && <p className="text-red-500 text-xs">{errors.password.message}</p>}
             </div>
-
-            {/* Confirm Password Field */}
             <div className="mb-3">
               <label htmlFor="confirmPassword" className="block text-sm font-semibold">
                 Confirm Password
@@ -177,8 +159,6 @@ export default function Header() {
                 <p className="text-red-500 text-xs">{errors.confirmPassword.message}</p>
               )}
             </div>
-
-            {/* Role Dropdown */}
             <div className="mb-3">
               <label htmlFor="role" className="block text-sm font-semibold">
                 Role
@@ -193,8 +173,6 @@ export default function Header() {
               </select>
               {errors.role && <p className="text-red-500 text-xs">{errors.role.message}</p>}
             </div>
-
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded-md mt-4"
@@ -204,8 +182,6 @@ export default function Header() {
           </form>
         </div>
       )}
-
-      {/* Pop-up success message */}
       {isRegistered && (
         <div className="fixed top-16 right-5 bg-green-500 text-white p-3 rounded-md shadow-md w-[300px]">
           <p>User Registered Successfully!</p>
