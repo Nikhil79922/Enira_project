@@ -22,7 +22,6 @@ function App() {
       setIsAuthenticated(true);
     }
   }, []);
-
   return (
     <Router>
       <Routes>
@@ -38,8 +37,6 @@ function App() {
         />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-
-
         <Route
           path="/dashboard/*"
           element={
@@ -67,8 +64,6 @@ function App() {
                               </Routes>
                             </div>
                           </div>
-
-
                         </>
                       } />
                     </Routes>

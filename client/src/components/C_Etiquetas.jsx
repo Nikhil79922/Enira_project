@@ -1,28 +1,15 @@
 import React ,{useState} from 'react'
-
-
-
 function C_Etiquetas() {
-
   const [selectedMachine, setSelectedMachine] = useState("");
   const [selectedOrder, setSelectedOrder] = useState("");
-
-
   const handleStartOrder = () => {
       alert(`Iniciar Orden for ${selectedMachine} and ${selectedOrder}`);
   };
 const machines = ["Impresora1", "Impresora2", "Impresora3", "Impresora4", "Impresora5", "Impresora6"];
 const orders = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5", "Etiqueta6"];
-
   return (
     <div className="flex flex-col mb-6 w-[82.5vw] mt-[-10px] ml-[10px]">
-
-
-
       <div className='flex items-center flex-wrap gap-4 mb-3 w-[82.5vw]  p-3 rounded'>
-
-    
-    {/* Machine Dropdown */}
     <div className="flex flex-col gap-1 w-[26vw]">
         <label className="block text-[14px] font-medium text-black mb-[2px]">Impresora</label>
         <select
@@ -40,8 +27,6 @@ const orders = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5",
             ))}
         </select>
     </div>
-
-    {/* Order Dropdown */}
     <div className="flex flex-col w-[26vw]">
         <label className="block text-[14px] font-medium text-black mb-[2px]">Etiqueta</label>
         <select
@@ -59,16 +44,11 @@ const orders = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5",
             ))}
         </select>
     </div>
-
     <div className="flex flex-col w-[26vw]">
         <label className="block text-[14px] font-medium text-black mb-[2px]">Cantidad</label>
         <input type="text" name="Cantidad" id="" placeholder='Cantidad'className="w-full h-[40px] pl-2 bg-white text-sm font-medium focus:border-gray-600 outline-none text-gray-700 border border-gray-300 rounded-[4px] " />
     </div>
-
-
     </div>
-
-    {/* Button */}
     <div className="ml-[12px]">
         <button
             className="w-[15vw] h-[40px] bg-blue-500 text-white text-[17px] font-medium focus:border-gray-600 rounded"
@@ -77,11 +57,7 @@ const orders = ["Etiqueta1", "Etiqueta2", "Etiqueta3", "Etiqueta4", "Etiqueta5",
            Imprimir etiquetas
         </button>
     </div>
-
-
-
     </div>
   )
 }
-
 export default C_Etiquetas
