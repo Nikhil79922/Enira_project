@@ -14,7 +14,12 @@ export default function Sidebar() {
   return (
     <aside className="w-[15.5vw] overflow-y-auto bg-white text-blue-570 h-full shadow-lg fixed left-0 top-0 scrollbar-hide">
       <div className="ml-[10px] flex items-center justify-between pl-4 pr-2 w-[14vw] h-[73px] border-b-[0.9px] border-gray-200 bg-white">
-        <img src="../src/assets/logo.jpeg" className="h-[60px] md:h-[70px] object-fill" alt="Logo" />
+      <img 
+  src="../src/assets/logo.jpeg" 
+  className="h-[60px] w-[90px] md:h-[70px] md:w-[100px] object-cover" 
+  alt="Logo" 
+/>
+
         <span className="material-symbols-outlined text-gray-300 cursor-pointer text-[26px] md:text-[22px] flex-shrink-0 ml-2">
           menu_open
         </span>
