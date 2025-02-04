@@ -11,7 +11,7 @@ export default function DashboardContent() {
     { timestamp: '2024-10-30 07:18:36', tipo: 'Tipo5', descripcion: 'Descripción de alerta 5' },
     { timestamp: '2024-10-30 07:21:49', tipo: 'Tipo6', descripcion: 'Descripción de alerta 6' },
   ]);
-  
+
   const [sortConfig, setSortConfig] = useState({ key: '', direction: 'ascending' });
 
   useEffect(() => {
@@ -39,12 +39,13 @@ export default function DashboardContent() {
 
   const getArrowClass = (key) => {
     if (sortConfig.key === key) {
-      return sortConfig.direction === 'ascending'
-        ? 'rotate-180 transition-transform duration-200'
-        : 'transition-transform duration-200';
+      return sortConfig.direction === "ascending"
+        ? "rotate-180 transform origin-center transition-transform duration-200"
+        : "transform origin-center transition-transform duration-200";
     }
-    return '';
+    return "transform origin-center";
   };
+  
 
   return (
     <div className="ml-[20px] flex flex-col w-[84vw]">
@@ -75,12 +76,9 @@ export default function DashboardContent() {
                   onClick={() => sortData('timestamp')}
                 >
                   Timestamp
-                  <div className={`inline-block ml-1 ${getArrowClass('timestamp')}`}>
-                    <span className="material-symbols-outlined text-xs">
-                      keyboard_arrow_up
-                    </span>
-                    <span className="material-symbols-outlined text-xs">
-                      keyboard_arrow_down
+                  <div className={`inline-block ml-1   ${getArrowClass('timestamp')}`}>
+                    <span class="material-symbols-outlined relative top-1 text-xl">
+                      unfold_more
                     </span>
                   </div>
                 </th>
@@ -89,12 +87,9 @@ export default function DashboardContent() {
                   onClick={() => sortData('tipo')}
                 >
                   Tipo
-                  <div className={`inline-block ml-1 ${getArrowClass('tipo')}`}>
-                    <span className="material-symbols-outlined text-xs">
-                      keyboard_arrow_up
-                    </span>
-                    <span className="material-symbols-outlined text-xs">
-                      keyboard_arrow_down
+                  <div className={`inline-block ml-1  ${getArrowClass('tipo')}`}>
+                    <span class="material-symbols-outlined relative top-1 text-xl">
+                      unfold_more
                     </span>
                   </div>
                 </th>
@@ -103,12 +98,9 @@ export default function DashboardContent() {
                   onClick={() => sortData('descripcion')}
                 >
                   Descripción
-                  <div className={`inline-block ml-1 ${getArrowClass('descripcion')}`}>
-                    <span className="material-symbols-outlined text-xs">
-                      keyboard_arrow_up
-                    </span>
-                    <span className="material-symbols-outlined text-xs">
-                      keyboard_arrow_down
+                  <div className={`inline-block ml-1  ${getArrowClass('descripcion')}`}>
+                    <span class="material-symbols-outlined relative top-1 text-xl ">
+                      unfold_more
                     </span>
                   </div>
                 </th>
