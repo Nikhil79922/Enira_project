@@ -48,7 +48,7 @@ export default function DashboardContent() {
   
 
   return (
-    <div className="ml-[20px] flex flex-col w-[84vw]">
+    <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] flex flex-col w-[99vw] lg:w-[84vw] ">
       <div className="flex gap-[12px] items-center mt-4 mb-6">
         <h2 className="text-lg md:text-2xl font-bold text-black">Dashboard</h2>
         <span className="material-symbols-outlined text-gray-400 bg-gray-200 p-2 rounded-full cursor-pointer text-base md:text-xl">
@@ -56,7 +56,7 @@ export default function DashboardContent() {
         </span>
       </div>
 
-      <div className="bg-white rounded-lg shadow p-4  md:p-3 w-[82.5vw] overflow-x-auto">
+      <div className="bg-white rounded-lg shadow p-4  md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
         <div className="flex gap-[12px] items-center pb-4 border-b">
           <p className="text-sm md:text-lg font-bold text-black">dbo.Alertas</p>
           <span
@@ -72,34 +72,34 @@ export default function DashboardContent() {
             <thead className="bg-blue-570 text-white  ">
               <tr>
                 <th
-                  className="p-2 md:p-3 text-sm md:text-base font-semibold cursor-pointer rounded-tl-lg"
+                  className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tl-lg"
                   onClick={() => sortData('timestamp')}
                 >
                   Timestamp
                   <div className={`inline-block ml-1   ${getArrowClass('timestamp')}`}>
-                    <span class="material-symbols-outlined relative top-1 text-xl">
+                    <span className="material-symbols-outlined relative top-1 text-base sm:text-lg md:text-xl">
                       unfold_more
                     </span>
                   </div>
                 </th>
                 <th
-                  className="p-2 md:p-3 text-sm md:text-base font-semibold cursor-pointer"
+                  className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer"
                   onClick={() => sortData('tipo')}
                 >
                   Tipo
                   <div className={`inline-block ml-1  ${getArrowClass('tipo')}`}>
-                    <span class="material-symbols-outlined relative top-1 text-xl">
+                    <span className="material-symbols-outlined relative top-1 text-base sm:text-lg md:text-xl">
                       unfold_more
                     </span>
                   </div>
                 </th>
                 <th
-                  className="p-2 md:p-3 text-sm md:text-base font-semibold cursor-pointer"
+                  className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tr-lg"
                   onClick={() => sortData('descripcion')}
                 >
                   Descripción
                   <div className={`inline-block ml-1  ${getArrowClass('descripcion')}`}>
-                    <span class="material-symbols-outlined relative top-1 text-xl ">
+                    <span className="material-symbols-outlined relative top-1 text-base sm:text-lg md:text-xl ">
                       unfold_more
                     </span>
                   </div>
@@ -109,9 +109,9 @@ export default function DashboardContent() {
             <tbody>
               {alerts.map((alert, index) => (
                 <tr key={index} className="border-t hover:bg-gray-100">
-                  <td className="p-2 md:p-3 text-sm md:text-base">{alert.timestamp}</td>
-                  <td className="p-2 md:p-3 text-sm md:text-base">{alert.tipo}</td>
-                  <td className="p-2 md:p-3 text-sm md:text-base">{alert.descripcion}</td>
+                  <td className="p-2 md:p-3 text-[11px] sm:text-sm md:text-base">{alert.timestamp}</td>
+                  <td className="p-2 md:p-3 text-[11px] sm:text-sm md:text-base">{alert.tipo}</td>
+                  <td className="p-2 md:p-3 text-[11px] sm:text-sm md:text-base">{alert.descripcion}</td>
                 </tr>
               ))}
             </tbody>

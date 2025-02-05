@@ -42,10 +42,10 @@ function App() {
           element={
             isAuthenticated ? (
               <div className="flex h-screen bg-gray-200 overflow-auto">
-                <div className="w-[15.5vw]">
+                <div className="w-[0vw] lg:w-[15.5vw]">
                   <Sidebar />
                 </div>
-                <div className="w-[84.5vw] flex flex-col overflow-hidden">
+                <div className="w-[100vw] lg:w-[84.5vw] flex flex-col overflow-x-hidden overflow-y-scroll">
                   <Header />
                   <div className="flex-grow">
                     <Routes>
