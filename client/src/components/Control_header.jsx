@@ -16,7 +16,7 @@ function Control_header() {
   };
 
   return (
-    <div className="ml-[20px] flex justify-between w-[96.7vw] lg:w-[83vw]">
+    <div className="ml-[20px] flex justify-between w-[96vw] lg:w-[81.6vw]">
       <div className="flex gap-[3px] sm:gap-[6px] md:gap-[9px] lg:gap-[12px] items-center mt-4 mb-6">
         <h2 className="text-[13px] sm:text-[17px] md:text-[20px] lg:text-lg md:text-2xl font-bold text-black">{`Control > ${value}`}</h2>
         <span className="material-symbols-outlined text-gray-400 pt-[10px] bg-gray-200 p-2 rounded-full cursor-pointer text-base md:text-xl">
