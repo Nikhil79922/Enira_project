@@ -24,14 +24,7 @@ export default function DashboardContent() {
     { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
     { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
     { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
-    { timestamp: '2024-10-30 07:18:36', tipo: 'Tipo5', descripcion: 'Descripción de alerta 5' },
-    { timestamp: '2024-10-30 07:21:49', tipo: 'Tipo6', descripcion: 'Descripción de alerta 6' },
-    { timestamp: '2024-10-30 07:21:53', tipo: 'Tipo7', descripcion: 'Descripción de alerta 7' },
-    { timestamp: '2024-10-30 07:21:57', tipo: 'Tipo8', descripcion: 'Descripción de alerta 8' },
-    { timestamp: '2024-10-30 07:21:51', tipo: 'Tipo9', descripcion: 'Descripción de alerta 9' },
-    { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
-    { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
-    { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
+   
 
   ]);
 
