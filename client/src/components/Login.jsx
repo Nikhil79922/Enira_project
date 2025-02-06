@@ -115,7 +115,7 @@ export default function LoginPage() {
               </button>
             </div>
 
-            <button
+            {/* <button
               type="submit"
               className="w-full h-[35px] text-sm bg-blue-400 text-white rounded-md hover:bg-blue-500 transition duration-200"
               disabled={loading}
@@ -127,7 +127,7 @@ export default function LoginPage() {
                 colors="primary:#ffffff,secondary:#ffffff"
                 style={{ width: '20px', height: '20px', padding:"2px" }}>
               </lord-icon> : "Sign In"}
-            </button>
+            </button> */}
           </form>
         </div>
 
