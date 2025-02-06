@@ -16,6 +16,14 @@ export default function DashboardContent() {
     { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
     { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
     { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
+    { timestamp: '2024-10-30 07:21:51', tipo: 'Tipo9', descripcion: 'Descripción de alerta 9' },
+    { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
+    { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
+    { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
+    { timestamp: '2024-10-30 07:21:51', tipo: 'Tipo9', descripcion: 'Descripción de alerta 9' },
+    { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
+    { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
+    { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
 
   ]);
 
@@ -85,7 +93,7 @@ export default function DashboardContent() {
             >
               Timestamp
               <div className={`inline-block ml-1 ${getArrowClass('timestamp')}`}>
-                <span className="material-symbols-outlined relative top-1 text-base sm:text-lg md:text-xl">
+                <span className="material-symbols-outlined relative z-0 top-1 text-base sm:text-lg md:text-xl">
                   unfold_more
                 </span>
               </div>
@@ -96,7 +104,7 @@ export default function DashboardContent() {
             >
               Tipo
               <div className={`inline-block ml-1 ${getArrowClass('tipo')}`}>
-                <span className="material-symbols-outlined relative top-1 text-base sm:text-lg md:text-xl">
+                <span className="material-symbols-outlined relative z-0 top-1 text-base sm:text-lg md:text-xl">
                   unfold_more
                 </span>
               </div>
@@ -107,7 +115,7 @@ export default function DashboardContent() {
             >
               Descripción
               <div className={`inline-block ml-1 ${getArrowClass('descripcion')}`}>
-                <span className="material-symbols-outlined relative top-1 text-base sm:text-lg md:text-xl">
+                <span className="material-symbols-outlined relative z-0 top-1 text-base sm:text-lg md:text-xl">
                   unfold_more
                 </span>
               </div>
