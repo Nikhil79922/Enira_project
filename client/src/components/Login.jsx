@@ -9,7 +9,7 @@ import sideImage from "../assets/sideImage.jpg";
 import logo from "../assets/companyLogo.jpg";
 import wavingHand from "../assets/wavingHand.png";
 
-export default function LoginPage({ setIsAuthenticated }) {
+export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -26,7 +26,6 @@ export default function LoginPage({ setIsAuthenticated }) {
 
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", response.data.token);
-        setIsAuthenticated(true);
 
         // Show success toast and navigate to dashboard
         toast.success("Login successful!", {
@@ -35,7 +34,7 @@ export default function LoginPage({ setIsAuthenticated }) {
           onClose: () => navigate("/dashboard"),
         });
       } else {
-        toast.error("Login failed. Invalid credentials.");
+        toast.error("Invalid credentials. Please try again.");
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed. Please try again.");
@@ -44,21 +43,14 @@ export default function LoginPage({ setIsAuthenticated }) {
     }
   };
 
-  const handleForgotPassword = () => {
-    navigate("/forgot-password");
-  };
-
   return (
     <div className="flex h-screen bg-white">
-      {/* Toast Notifications */}
       <ToastContainer />
 
-      {/* Left Side - Image */}
       <div className="w-1/2 hidden md:flex items-center justify-center p-6">
         <img src={sideImage} alt="Side" className="w-full h-auto object-cover rounded-lg" />
       </div>
 
-      {/* Right Side - Login Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center relative">
         <div className="w-full max-w-md p-6">
           <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4" />
@@ -114,25 +106,31 @@ export default function LoginPage({ setIsAuthenticated }) {
             </div>
 
             <div className="text-right">
-              <a
-                onClick={handleForgotPassword}
-                className="text-xs text-blue-400 cursor-pointer"
+              <button
+                type="button"
+                onClick={() => navigate("/forgot-password")}
+                className="text-xs text-blue-400"
               >
                 Forgot Password?
-              </a>
+              </button>
             </div>
 
             <button
               type="submit"
-              className="w-full py-2 text-sm bg-blue-400 text-white rounded-md hover:bg-blue-500 transition duration-200"
+              className="w-full h-[35px] text-sm bg-blue-400 text-white rounded-md hover:bg-blue-500 transition duration-200"
               disabled={loading}
             >
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? <lord-icon
+                src="https://cdn.lordicon.com/mfblariy.json"
+                trigger="loop"
+                state="loop-cycle"
+                colors="primary:#ffffff,secondary:#ffffff"
+                style={{ width: '20px', height: '20px', padding:"2px" }}>
+              </lord-icon> : "Sign In"}
             </button>
           </form>
         </div>
 
-        {/* Footer */}
         <footer className="absolute bottom-4 w-full text-center">
           <p className="text-xs text-gray-400">© 2025 Enira Lean Automation.</p>
         </footer>

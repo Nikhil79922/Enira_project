@@ -48,7 +48,7 @@ export default function DashboardContent() {
   
 
   return (
-    <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] flex flex-col w-[99vw] lg:w-[84vw] ">
+    <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] flex flex-col w-[99vw] lg:w-[84vw] bg-gray-200 ">
       <div className="flex gap-[12px] items-center mt-4 mb-6">
         <h2 className="text-lg md:text-2xl font-bold text-black">Dashboard</h2>
         <span className="material-symbols-outlined text-gray-400 bg-gray-200 p-2 rounded-full cursor-pointer text-base md:text-xl">
@@ -69,7 +69,7 @@ export default function DashboardContent() {
 
         {!isdbo && (
           <table className="table-auto w-full mt-4 text-left border-collapse">
-            <thead className="bg-blue-570 text-white  ">
+            <thead className="bg-blue-580 text-white  ">
               <tr>
                 <th
                   className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tl-lg"

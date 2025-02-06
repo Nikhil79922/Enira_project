@@ -2,10 +2,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+
+
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+
+
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
+    reset(); // Clear the form fields when closing
+  };
 
   const {
     register,
@@ -49,7 +58,7 @@ export default function Header() {
         <span className="material-symbols-outlined cursor-pointer text-gray-350 bg-white flex items-center justify-center w-[8vw] sm:w-[6vw] md:w-[4vw]   lg:w-[2.8vw] text-[23px] rounded-tl-[8px] rounded-bl-[8px] ml-[10px] sm:ml-[20px]   h-[42px]">
           search
         </span>
-        <input type="text" name="search" {...register("search")} placeholder="Search Tasks"  className=" h-[42px] font-bold outline-none w-[28vw] sm:w-[25vw] md:w-[18vw] lg:w-[14vw] text-[12px] " />
+        <input type="text" name="search" {...register("search")} placeholder="Search Tasks" className=" h-[42px] font-bold outline-none w-[28vw] sm:w-[25vw] md:w-[18vw] lg:w-[14vw] text-[12px] " />
         <span className="material-symbols-outlined text-gray-350 bg-white flex items-center justify-center w-[8vw] sm:w-[6vw] md:w-[4vw]  lg:w-[2.8vw] text-[23px] cursor-pointer h-[42px] rounded-tr-[8px] rounded-br-[8px] ">
           login
         </span>
@@ -82,7 +91,7 @@ export default function Header() {
                 {/* Add New User option */}
                 <li
                   className="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-200"
-                  onClick={() => setIsFormOpen(!isFormOpen)}
+                  onClick={() => setIsFormOpen(true)}
                 >
                   Add New User
                 </li>
@@ -92,8 +101,17 @@ export default function Header() {
         </div>
       </div>
       {isFormOpen && (
-        <div className="absolute top-16 right-5 bg-white p-5 rounded-md border border-gray-300 shadow-lg w-[300px]">
-          <h2 className="text-xl mb-4 font-bold">Register New User</h2>
+        <div className="absolute top-16 right-5 bg-white p-5 rounded-md border  border-gray-300 shadow-lg w-[300px]">
+          <div className="flex justify-between">
+            <h2 className="text-xl mb-4 font-bold">Register New User</h2>
+            <button
+              className="text-gray-500 hover:text-gray-700 px-[10px]"
+              onClick={handleCloseForm}
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+
+          </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
               <label htmlFor="name" className="block text-sm font-semibold">
@@ -175,7 +193,7 @@ export default function Header() {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white p-2 rounded-md mt-4"
+              className="w-full bg-blue-570 text-white p-2 rounded-md mt-4"
             >
               Register User
             </button>
