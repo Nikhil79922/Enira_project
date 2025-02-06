@@ -16,10 +16,18 @@ export default function DashboardContent() {
     { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
     { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
     { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
+    { timestamp: '2024-10-30 07:18:36', tipo: 'Tipo5', descripcion: 'Descripción de alerta 5' },
+    { timestamp: '2024-10-30 07:21:49', tipo: 'Tipo6', descripcion: 'Descripción de alerta 6' },
+    { timestamp: '2024-10-30 07:21:53', tipo: 'Tipo7', descripcion: 'Descripción de alerta 7' },
+    { timestamp: '2024-10-30 07:21:57', tipo: 'Tipo8', descripcion: 'Descripción de alerta 8' },
     { timestamp: '2024-10-30 07:21:51', tipo: 'Tipo9', descripcion: 'Descripción de alerta 9' },
     { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
     { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
     { timestamp: '2024-10-30 07:21:12', tipo: 'Tipo12', descripcion: 'Descripción de alerta 12' },
+    { timestamp: '2024-10-30 07:18:36', tipo: 'Tipo5', descripcion: 'Descripción de alerta 5' },
+    { timestamp: '2024-10-30 07:21:49', tipo: 'Tipo6', descripcion: 'Descripción de alerta 6' },
+    { timestamp: '2024-10-30 07:21:53', tipo: 'Tipo7', descripcion: 'Descripción de alerta 7' },
+    { timestamp: '2024-10-30 07:21:57', tipo: 'Tipo8', descripcion: 'Descripción de alerta 8' },
     { timestamp: '2024-10-30 07:21:51', tipo: 'Tipo9', descripcion: 'Descripción de alerta 9' },
     { timestamp: '2024-10-30 07:21:42', tipo: 'Tipo10', descripcion: 'Descripción de alerta 10' },
     { timestamp: '2024-10-30 07:21:11', tipo: 'Tipo11', descripcion: 'Descripción de alerta 11' },
@@ -60,81 +68,90 @@ export default function DashboardContent() {
     }
     return "transform origin-center";
   };
-  
+
 
   return (
     <div className="ml-[5px] sm:ml-[10px] lg:ml-[20px] mt-[73px] flex flex-col w-[99vw] mb-[50px] lg:w-[84vw] bg-gray-200">
-  <div className="flex gap-[12px] items-center mt-4 mb-6">
-    <h2 className="text-lg md:text-2xl font-bold text-black">Dashboard</h2>
-    <span className="material-symbols-outlined text-gray-400 bg-gray-200 p-2 rounded-full cursor-pointer text-base md:text-xl">
-      edit
-    </span>
-  </div>
+      <div className="flex gap-[12px] items-center mt-4 mb-6">
+        <h2 className="text-lg md:text-2xl font-bold text-black">Dashboard</h2>
+        <span className="material-symbols-outlined text-gray-400 bg-gray-200 p-2 rounded-full cursor-pointer text-base md:text-xl">
+          edit
+        </span>
+      </div>
 
-  <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
-    <div className="flex gap-[12px] items-center pb-4 border-b">
-      <p className="text-sm md:text-lg font-bold text-black">dbo.Alertas</p>
+      <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
+        <div className="flex gap-[12px] items-center pb-4 border-b">
+          <p className="text-sm md:text-lg font-bold text-black">dbo.Alertas</p>
 
-      <span
-        className={`material-symbols-outlined text-lg md:text-xl cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform`}
-        onClick={() => setdbo(!isdbo)}
-      >
-        keyboard_arrow_down
-      </span>
+          <span
+            className={`material-symbols-outlined text-lg md:text-xl cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform`}
+            onClick={() => setdbo(!isdbo)}
+          >
+            keyboard_arrow_down
+          </span>
+        </div>
+
+        {!isdbo && (
+          <table className="table-auto w-full mt-4 text-left border-collapse">
+            <thead className="bg-blue-580 text-white">
+              <tr>
+                <th
+                  className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tl-lg"
+                  onClick={() => sortData('timestamp')}
+                >
+                  Timestamp
+                  <div className={`inline-block ml-1 ${getArrowClass('timestamp')}`}>
+                    <span
+                      style={{ position: 'relative', zIndex: 0 }}
+                      className="material-symbols-outlined top-1 text-base sm:text-lg md:text-xl"
+                    >
+                      unfold_more
+                    </span>
+                  </div>
+                </th>
+                <th
+                  className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer"
+                  onClick={() => sortData('tipo')}
+                >
+                  Tipo
+                  <div className={`inline-block ml-1 ${getArrowClass('tipo')}`}>
+                  <span
+                      style={{ position: 'relative', zIndex: 0 }}
+                      className="material-symbols-outlined top-1 text-base sm:text-lg md:text-xl"
+                    >
+                      unfold_more
+                    </span>
+                  </div>
+                </th>
+                <th
+                  className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tr-lg"
+                  onClick={() => sortData('descripcion')}
+                >
+                  Descripción
+                  <div className={`inline-block ml-1 ${getArrowClass('descripcion')}`}>
+                  <span
+                      style={{ position: 'relative', zIndex: 0 }}
+                      className="material-symbols-outlined top-1 text-base sm:text-lg md:text-xl"
+                    >
+                      unfold_more
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {alerts.map((alert, index) => (
+                <tr key={index} className="border-t hover:bg-gray-100">
+                  <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.timestamp}</td>
+                  <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.tipo}</td>
+                  <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.descripcion}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
-
-    {!isdbo && (
-      <table className="table-auto w-full mt-4 text-left border-collapse">
-        <thead className="bg-blue-580 text-white">
-          <tr>
-            <th
-              className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tl-lg"
-              onClick={() => sortData('timestamp')}
-            >
-              Timestamp
-              <div className={`inline-block ml-1 ${getArrowClass('timestamp')}`}>
-                <span className="material-symbols-outlined relative z-0 top-1 text-base sm:text-lg md:text-xl">
-                  unfold_more
-                </span>
-              </div>
-            </th>
-            <th
-              className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer"
-              onClick={() => sortData('tipo')}
-            >
-              Tipo
-              <div className={`inline-block ml-1 ${getArrowClass('tipo')}`}>
-                <span className="material-symbols-outlined relative z-0 top-1 text-base sm:text-lg md:text-xl">
-                  unfold_more
-                </span>
-              </div>
-            </th>
-            <th
-              className="p-2 md:p-3 text-[12px] sm:text-sm md:text-base font-semibold cursor-pointer rounded-tr-lg"
-              onClick={() => sortData('descripcion')}
-            >
-              Descripción
-              <div className={`inline-block ml-1 ${getArrowClass('descripcion')}`}>
-                <span className="material-symbols-outlined relative z-0 top-1 text-base sm:text-lg md:text-xl">
-                  unfold_more
-                </span>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {alerts.map((alert, index) => (
-            <tr key={index} className="border-t hover:bg-gray-100">
-              <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.timestamp}</td>
-              <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.tipo}</td>
-              <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.descripcion}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    )}
-  </div>
-</div>
 
   );
 }
