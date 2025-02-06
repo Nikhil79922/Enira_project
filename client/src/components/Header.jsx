@@ -101,104 +101,114 @@ export default function Header() {
         </div>
       </div>
       {isFormOpen && (
-        <div className="absolute top-16 right-5 bg-white p-5 rounded-md border  border-gray-300 shadow-lg w-[300px]">
-          <div className="flex justify-between">
-            <h2 className="text-xl mb-4 font-bold">Register New User</h2>
-            <button
-              className="text-gray-500 hover:text-gray-700 px-[10px]"
-              onClick={handleCloseForm}
-            >
-              <span className="material-symbols-outlined">close</span>
-            </button>
-
-          </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-3">
-              <label htmlFor="name" className="block text-sm font-semibold">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                {...register("name", { required: "Name is required" })}
-                className="w-full p-2 border border-gray-300 rounded-md mt-1"
-              />
-              {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="email" className="block text-sm font-semibold">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                {...register("email", { required: "Email is required" })}
-                className="w-full p-2 border border-gray-300 rounded-md mt-1"
-              />
-              {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="block text-sm font-semibold">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                {...register("password", {
-                  required: "Password is required",
-                  minLength: {
-                    value: 8,
-                    message: "Password must be at least 8 characters long",
-                  },
-                  pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
-                    message:
-                      "Password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character (!@#$%^&*)",
-                  },
-                })}
-                className="w-full p-2 border border-gray-300 rounded-md mt-1"
-              />
-              {errors.password && <p className="text-red-500 text-xs">{errors.password.message}</p>}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                {...register("confirmPassword", {
-                  validate: (value) =>
-                    value === watch("password") || "Passwords do not match",
-                })}
-                className="w-full p-2 border border-gray-300 rounded-md mt-1"
-              />
-              {errors.confirmPassword && (
-                <p className="text-red-500 text-xs">{errors.confirmPassword.message}</p>
-              )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="role" className="block text-sm font-semibold">
-                Role
-              </label>
-              <select
-                id="role"
-                {...register("role", { required: "Role is required" })}
-                className="w-full p-2 border border-gray-300 rounded-md mt-1"
-              >
-                <option value="ROLE_USER">ROLE_USER</option>
-                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-              </select>
-              {errors.role && <p className="text-red-500 text-xs">{errors.role.message}</p>}
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-570 text-white p-2 rounded-md mt-4"
-            >
-              Register User
-            </button>
-          </form>
+      <div className="absolute top-16 right-5 bg-white p-5 rounded-md border border-gray-300 shadow-lg w-[90vw] sm:w-[400px] lg:w-[450px]">
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg sm:text-xl font-bold">Register New User</h2>
+        <button
+          className="text-gray-500 hover:text-gray-700 p-2"
+          onClick={handleCloseForm}
+        >
+          <span className="material-symbols-outlined">close</span>
+        </button>
+      </div>
+    
+      {/* Form */}
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
+        {/* Name */}
+        <div className="mb-3">
+          <label htmlFor="name" className="block text-sm font-semibold">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            {...register("name", { required: "Name is required" })}
+            className="w-full p-2 border border-gray-300 rounded-md mt-1 text-sm sm:text-base"
+          />
+          {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
         </div>
+    
+        {/* Email */}
+        <div className="mb-3">
+          <label htmlFor="email" className="block text-sm font-semibold">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            {...register("email", { required: "Email is required" })}
+            className="w-full p-2 border border-gray-300 rounded-md mt-1 text-sm sm:text-base"
+          />
+          {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
+        </div>
+    
+        {/* Password */}
+        <div className="mb-3">
+          <label htmlFor="password" className="block text-sm font-semibold">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            {...register("password", {
+              required: "Password is required",
+              minLength: { value: 8, message: "Must be at least 8 characters" },
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/,
+                message: "Must contain uppercase, lowercase, number, and special character",
+              },
+            })}
+            className="w-full p-2 border border-gray-300 rounded-md mt-1 text-sm sm:text-base"
+          />
+          {errors.password && <p className="text-red-500 text-xs">{errors.password.message}</p>}
+        </div>
+    
+        {/* Confirm Password */}
+        <div className="mb-3">
+          <label htmlFor="confirmPassword" className="block text-sm font-semibold">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            {...register("confirmPassword", {
+              validate: (value) =>
+                value === watch("password") || "Passwords do not match",
+            })}
+            className="w-full p-2 border border-gray-300 rounded-md mt-1 text-sm sm:text-base"
+          />
+          {errors.confirmPassword && (
+            <p className="text-red-500 text-xs">{errors.confirmPassword.message}</p>
+          )}
+        </div>
+    
+        {/* Role */}
+        <div className="mb-3">
+          <label htmlFor="role" className="block text-sm font-semibold">
+            Role
+          </label>
+          <select
+            id="role"
+            {...register("role", { required: "Role is required" })}
+            className="w-full p-2 border border-gray-300 rounded-md mt-1 text-sm sm:text-base"
+          >
+            <option value="ROLE_USER">ROLE_USER</option>
+            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+          </select>
+          {errors.role && <p className="text-red-500 text-xs">{errors.role.message}</p>}
+        </div>
+    
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full bg-blue-570 hover:bg-blue-590 text-white p-2 rounded-md mt-4 text-sm sm:text-base font-medium"
+        >
+          Register User
+        </button>
+      </form>
+    </div>
+    
       )}
       {isRegistered && (
         <div className="fixed top-16 right-5 bg-green-500 text-white p-3 rounded-md shadow-md w-[300px]">
