@@ -10,6 +10,9 @@ export default function DashboardContent() {
     { timestamp: '2024-10-30 07:15:25', tipo: 'Tipo4', descripcion: 'Descripción de alerta 4' },
     { timestamp: '2024-10-30 07:18:36', tipo: 'Tipo5', descripcion: 'Descripción de alerta 5' },
     { timestamp: '2024-10-30 07:21:49', tipo: 'Tipo6', descripcion: 'Descripción de alerta 6' },
+    { timestamp: '2024-10-30 07:21:53', tipo: 'Tipo7', descripcion: 'Descripción de alerta 7' },
+    { timestamp: '2024-10-30 07:21:57', tipo: 'Tipo8', descripcion: 'Descripción de alerta 8' },
+    { timestamp: '2024-10-30 07:21:59', tipo: 'Tipo9', descripcion: 'Descripción de alerta 9' },
   ]);
 
   const [sortConfig, setSortConfig] = useState({ key: '', direction: 'ascending' });
@@ -59,9 +62,6 @@ export default function DashboardContent() {
   <div className="bg-white rounded-lg shadow p-4 md:p-3 w-[97.8vw] lg:w-[82.5vw] overflow-x-auto">
     <div className="flex gap-[12px] items-center pb-4 border-b">
       <p className="text-sm md:text-lg font-bold text-black">dbo.Alertas</p>
-
-      {/* Purple Block */}
-      <div className="w-4 h-4 bg-purple-500 rounded"></div>
 
       <span
         className={`material-symbols-outlined text-lg md:text-xl cursor-pointer ${isdbo ? 'rotate-180' : ''} transition-transform`}
@@ -113,9 +113,9 @@ export default function DashboardContent() {
         <tbody>
           {alerts.map((alert, index) => (
             <tr key={index} className="border-t hover:bg-gray-100">
-              <td className="p-2 md:p-3 text-[11px] sm:text-sm md:text-base">{alert.timestamp}</td>
-              <td className="p-2 md:p-3 text-[11px] sm:text-sm md:text-base">{alert.tipo}</td>
-              <td className="p-2 md:p-3 text-[11px] sm:text-sm md:text-base">{alert.descripcion}</td>
+              <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.timestamp}</td>
+              <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.tipo}</td>
+              <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.descripcion}</td>
             </tr>
           ))}
         </tbody>
