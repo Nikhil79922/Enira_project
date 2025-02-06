@@ -24,9 +24,10 @@ export default function Sidebar() {
       </button>
 
       <aside
-        className={`lg:min-w-[200px] lg:w-[15.5vw] overflow-y-auto bg-white text-blue-500 h-full shadow-lg fixed left-0 top-0 scrollbar-hide transition-transform duration-500 ${
+         className={`lg:min-w-[200px] lg:w-[15.5vw] z-60 overflow-y-auto bg-white text-blue-500 h-full shadow-lg fixed left-0 top-0 scrollbar-hide transition-transform duration-500 ${
           isSlideOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
+        style={{ position: 'fixed', zIndex: 60 }}
       >
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
           <img
