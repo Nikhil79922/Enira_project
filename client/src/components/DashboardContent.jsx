@@ -135,9 +135,9 @@ export default function DashboardContent() {
             <tbody>
               {alerts.map((alert, index) => (
                 <tr key={index} className="border-t hover:bg-gray-100">
-                  <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.timestamp}</td>
-                  <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.tipo}</td>
-                  <td className="p-2 md:p-[0.6rem] text-[11px] sm:text-sm md:text-base">{alert.descripcion}</td>
+                  <td className="p-2 md:p-[0.6rem] text-[11px] font-medium sm:text-sm md:text-sm">{alert.timestamp}</td>
+                  <td className="p-2 md:p-[0.6rem] text-[11px] font-medium sm:text-sm md:text-sm">{alert.tipo}</td>
+                  <td className="p-2 md:p-[0.6rem] text-[11px] font-medium sm:text-sm md:text-sm">{alert.descripcion}</td>
                 </tr>
               ))}
             </tbody>
