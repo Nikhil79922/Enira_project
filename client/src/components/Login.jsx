@@ -20,27 +20,28 @@ export default function LoginPage() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    setLoading(true);
-    try {
-      const response = await axios.post("http://localhost:8000/auth/login", data);
+    navigate("/Dashboard")
+    // setLoading(true);
+    // try {
+    //   const response = await axios.post("http://localhost:8000/auth/login", data);
 
-      if (response.status === 200 && response.data.token) {
-        localStorage.setItem("token", response.data.token);
+    //   if (response.status === 200 && response.data.token) {
+    //     localStorage.setItem("token", response.data.token);
 
-        // Show success toast and navigate to dashboard
-        toast.success("Login successful!", {
-          position: "top-right",
-          autoClose: 1500,
-          onClose: () => navigate("/dashboard"),
-        });
-      } else {
-        toast.error("Invalid credentials. Please try again.");
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    //     // Show success toast and navigate to dashboard
+    //     toast.success("Login successful!", {
+    //       position: "top-right",
+    //       autoClose: 1500,
+    //       onClose: () => navigate("/dashboard"),
+    //     });
+    //   } else {
+    //     toast.error("Invalid credentials. Please try again.");
+    //   }
+    // } catch (error) {
+    //   toast.error(error.response?.data?.message || "Login failed. Please try again.");
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   return (
@@ -115,7 +116,7 @@ export default function LoginPage() {
               </button>
             </div>
 
-            {/* <button
+            <button
               type="submit"
               className="w-full h-[35px] text-sm bg-blue-400 text-white rounded-md hover:bg-blue-500 transition duration-200"
               disabled={loading}
@@ -127,7 +128,7 @@ export default function LoginPage() {
                 colors="primary:#ffffff,secondary:#ffffff"
                 style={{ width: '20px', height: '20px', padding:"2px" }}>
               </lord-icon> : "Sign In"}
-            </button> */}
+            </button>
           </form>
         </div>
 
@@ -138,3 +139,6 @@ export default function LoginPage() {
     </div>
   );
 }
+
+
+
