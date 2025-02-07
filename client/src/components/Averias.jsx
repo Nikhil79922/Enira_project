@@ -189,8 +189,10 @@ const Averias = () => {
 
         {/* Modals */}
         {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white rounded-lg shadow-md sm:w-[500px]">
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center "
+          style={{zIndex: 60 }}
+          >
+            <div className="bg-white rounded-lg shadow-md sm:w-[500px] ">
               <div className="flex justify-between items-center bg-gray-100 rounded-t-lgv">
                 <h3 className="text-[18px] p-[10px] font-bold">
                   {modalType === "edit" ? "Editar Pop-up Window" : modalType === "agrupar" ? "Agrupar Pop-up Window" : "Dividir Pop-up Window"}
