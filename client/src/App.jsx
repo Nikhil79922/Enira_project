@@ -22,10 +22,6 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/dashboard/*"  
-
-
-
-          
           element={
             <div className="flex h-screen bg-gray-200 overflow-auto">
               <div className="w-[0vw] lg:w-[15.5vw]">
