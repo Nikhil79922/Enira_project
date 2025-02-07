@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Sidebar from "../components/layout/Sidebar.jsx";
 import Header from "../components/layout/Header.jsx";
 import LoginPage from "../components/authentication/Login.jsx";
-import DashboardContent from "../components/layout/DashboardContent.jsx";
+import DashboardContent from "../components/DashboardContent.jsx";
 import Footer from "../components/layout/Footer.jsx";
 import ForgotPassword from "../components/authentication/ForgotPassword.jsx";
 import ResetPassword from "../components/authentication/ResetPassword.jsx";
