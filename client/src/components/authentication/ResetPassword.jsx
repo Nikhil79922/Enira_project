@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import sideImage from "../assets/sideImage.jpg";
-import logo from "../assets/companyLogo.jpg";
+import sideImage from "../../assets/sideImage.jpg";
+import logo from "../../assets/logo.jpeg";
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ const token=queryParams.get('token');
       </div>
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
         <div className="w-full max-w-md p-6">
-          <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4" />
+          <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4 object-cover" />
           <h1 className="text-2xl font-bold text-gray-800">Reset Password</h1>
           <p className="text-sm text-gray-600 mb-4">Enter a new password for your account.</p>
 

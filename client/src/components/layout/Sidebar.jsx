@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import logo from '../assets/companyLogo.jpg'
+import logo from '../../assets/logo.jpeg'
 
 export default function Sidebar() {
   const location = useLocation();
@@ -32,7 +32,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-between px-4 h-[73px] border-b border-gray-200 bg-white">
           <img
             src={logo}
-            className="h-[60px] w-[90px] md:h-[70px] md:w-[100px] object-contain"
+            className="h-[60px] w-[90px] md:h-[70px] md:w-[100px] object-cover"
             alt="Logo"
           />
           <span

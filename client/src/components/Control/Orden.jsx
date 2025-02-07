@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SelectBox from "./SelectBox";
+import SelectBox from "../SelectBox";
 const machines = [
   { value: "Máquina1", label: "Máquina 1" },
   { value: "Máquina2", label: "Máquina 2" },

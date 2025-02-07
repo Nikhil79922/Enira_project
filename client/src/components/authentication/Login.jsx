@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import sideImage from "../assets/sideImage.jpg";
-import logo from "../assets/companyLogo.jpg";
-import wavingHand from "../assets/wavingHand.png";
+import sideImage from "../../assets/sideImage.jpg";
+import logo from "../../assets/logo.jpeg";
+import wavingHand from "../../assets/wavingHand.png";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -54,7 +54,7 @@ export default function LoginPage() {
 
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center relative">
         <div className="w-full max-w-md p-6">
-          <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4" />
+          <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4 object-cover" />
 
           <div className="flex items-center mb-2">
             <h1 className="text-2xl font-bold text-gray-800">Welcome Back</h1>
