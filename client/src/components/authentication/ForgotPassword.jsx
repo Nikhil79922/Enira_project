@@ -2,8 +2,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import sideImage from "../assets/sideImage.jpg";
-import logo from "../assets/companyLogo.jpg";
+import sideImage from "../../assets/sideImage.jpg";
+import logo from "../../assets/logo.jpeg";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ export default function ForgotPassword() {
 
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center relative">
         <div className="w-full max-w-md p-6">
-          <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4" />
+          <img src={logo} alt="Company Logo" className="h-10 w-28 mb-4 object-cover" />
           <h1 className="text-2xl font-bold text-gray-800">Forgot Password?</h1>
           <p className="text-sm text-gray-600 mb-4">Enter your email to receive a password reset link.</p>
           <form onSubmit={handleSubmit} className="space-y-4">

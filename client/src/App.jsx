@@ -1,21 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import LoginPage from "./components/Login";
-import DashboardContent from "./components/DashboardContent";
-import Footer from "./components/Footer";
-import ForgotPassword from "./components/ForgotPassword";
-import ResetPassword from "./components/ResetPassword";
-import Control_header from "./components/Control_header";
-import C_Consumos from "./components/C_Consumos";
-import C_Etiquetas from "./components/C_Etiquetas";
-import Orden from "./components/Orden";
-import Scrap from "./components/Scrap";
-import Averias from "./components/Averias/Averias";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoute.jsx"; 
 
 function App() {
   return (
     <Router>
+<<<<<<< HEAD
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -56,6 +45,9 @@ function App() {
           }
         />
       </Routes>
+=======
+      <AppRoutes />
+>>>>>>> 285733e9e9305d3e78b9a25311b738772ef8c233
     </Router>
   );
 }

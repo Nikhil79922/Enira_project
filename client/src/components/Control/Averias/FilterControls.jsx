@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import SelectBox from "../SelectBox.jsx"; // Importing the reusable SelectBox component
-
+import SelectBox from "../../SelectBox.jsx"; 
 const machineOptions = [
   { value: "Máquina1", label: "Máquina 1" },
   { value: "Máquina2", label: "Máquina 2" },
