@@ -1,99 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
+import SelectBox from "./SelectBox"; // Import reusable SelectBox component
+
+const machineOptions = [
+  { value: "Máquina1", label: "Máquina 1" },
+  { value: "Máquina2", label: "Máquina 2" },
+];
+
+const orderOptions = [
+  { value: "Orden1", label: "Orden 1" },
+  { value: "Orden2", label: "Orden 2" },
+];
+
+const unitOptions = [
+  { value: "Unidad1", label: "Unidad 1" },
+  { value: "Unidad2", label: "Unidad 2" },
+];
+
+const defectOptions = [
+  { value: "Defecto1", label: "Defecto 1" },
+  { value: "Defecto2", label: "Defecto 2" },
+];
 
 const Scrap = () => {
+  const [selectedMachine, setSelectedMachine] = useState("");
+  const [selectedOrder, setSelectedOrder] = useState("");
+  const [selectedUnit, setSelectedUnit] = useState("");
+  const [selectedDefect, setSelectedDefect] = useState("");
+  const [product, setProduct] = useState("");
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState("");
+
   return (
     <div className="bg-gray-200 min-h-screen flex items-start justify-center">
-      <form className="bg-gray-200  px-4 rounded-lg  w-full ">
+      <form className="bg-gray-200 px-4 rounded-lg w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* Máquina */}
-          <div>
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Máquina
-            </label>
-            <select
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
-            >
-              <option>Máquina</option>
-              <option>Máquina 1</option>
-              <option>Máquina 2</option>
-            </select>
-          </div>
+          {/* Máquina Dropdown */}
+          <SelectBox 
+            label="Máquina" 
+            options={machineOptions} 
+            value={selectedMachine} 
+            onChange={(e) => setSelectedMachine(e.target.value)}
+            placeholder="Máquina"
+          />
 
-          {/* Orden */}
-          <div>
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Orden
-            </label>
-            <select
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
-            >
-              <option>Orden</option>
-              <option>Orden 1</option>
-              <option>Orden 2</option>
-            </select>
-          </div>
+          {/* Orden Dropdown */}
+          <SelectBox 
+            label="Orden" 
+            options={orderOptions} 
+            value={selectedOrder} 
+            onChange={(e) => setSelectedOrder(e.target.value)}
+            placeholder="Orden"
+          />
 
-          {/* Producto */}
+          {/* Producto Input */}
           <div>
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Producto
-            </label>
+            <label className="block text-sm font-medium text-black mb-1">Producto</label>
             <input
               type="text"
               placeholder="Producto"
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
+              value={product}
+              onChange={(e) => setProduct(e.target.value)}
+              className="w-full h-[36px] bg-white text-xs outline-none border border-gray-100 rounded px-2"
             />
           </div>
 
-          {/* Descripción */}
+          {/* Descripción Input */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-3">
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Descripción
-            </label>
+            <label className="block text-sm font-medium text-black mb-1">Descripción</label>
             <input
               type="text"
               placeholder="Descripción"
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full h-[36px] bg-white text-xs outline-none border border-gray-100 rounded px-2"
             />
           </div>
 
-          {/* Unidad */}
-          <div>
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Unidad
-            </label>
-            <select
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
-            >
-              <option>Unidad</option>
-              <option>Unidad 1</option>
-              <option>Unidad 2</option>
-            </select>
-          </div>
+          {/* Unidad Dropdown */}
+          <SelectBox 
+            label="Unidad" 
+            options={unitOptions} 
+            value={selectedUnit} 
+            onChange={(e) => setSelectedUnit(e.target.value)}
+            placeholder="Unidad"
+          />
 
-          {/* Tipo de defecto */}
-          <div>
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Tipo de defecto
-            </label>
-            <select
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
-            >
-              <option>Tipo de defecto</option>
-              <option>Defecto 1</option>
-              <option>Defecto 2</option>
-            </select>
-          </div>
+          {/* Tipo de Defecto Dropdown */}
+          <SelectBox 
+            label="Tipo de defecto" 
+            options={defectOptions} 
+            value={selectedDefect} 
+            onChange={(e) => setSelectedDefect(e.target.value)}
+            placeholder="Tipo de defecto"
+          />
 
-          {/* Cantidad */}
+          {/* Cantidad Input */}
           <div>
-            <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">
-              Cantidad
-            </label>
+            <label className="block text-sm font-medium text-black mb-1">Cantidad</label>
             <input
               type="number"
               placeholder="Cantidad"
-              className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              className="w-full h-[36px] bg-white text-xs outline-none border border-gray-100 rounded px-2"
             />
           </div>
         </div>
@@ -102,7 +111,7 @@ const Scrap = () => {
         <div className="mt-6 text-left">
           <button
             type="submit"
-            className="w-[170px] h-[35px] bg-blue-570 text-white text-sm font-medium rounded  hover:bg-blue-590"
+            className="w-[170px] h-[35px] bg-blue-570 text-white text-sm font-medium rounded hover:bg-blue-590"
           >
             Introducir Scrap
           </button>

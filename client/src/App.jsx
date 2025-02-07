@@ -11,7 +11,7 @@ import C_Consumos from "./components/C_Consumos";
 import C_Etiquetas from "./components/C_Etiquetas";
 import Orden from "./components/Orden";
 import Scrap from "./components/Scrap";
-import Averias from "./components/Averias";
+import Averias from "./components/Averias/Averias";
 
 function App() {
   return (

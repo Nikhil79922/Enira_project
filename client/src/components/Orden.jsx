@@ -1,7 +1,17 @@
 import React, { useState } from "react";
+import SelectBox from "./SelectBox";
+const machines = [
+  { value: "Máquina1", label: "Máquina 1" },
+  { value: "Máquina2", label: "Máquina 2" },
+  { value: "Máquina3", label: "Máquina 3" },
+];
 
-const machines = ["Máquina1", "Máquina2", "Máquina3", "Máquina4", "Máquina5", "Máquina6"];
-const orders = ["0F0001", "0F0002", "0F0003", "0F0004", "0F0005", "0F0006"];
+const orders = [
+  { value: "0F0001", label: "0F0001" },
+  { value: "0F0002", label: "0F0002" },
+  { value: "0F0003", label: "0F0003" },
+];
+
 
 const tableData = [
   { machine: "Máquina1", order: "0F0001", product: "PR0001", status: "Producción", toFabricate: "10,000", fabricated: "7,564", bgClass: "bg-green-100" },
@@ -36,42 +46,27 @@ export default function Orden() {
       <div className="flex flex-wrap items-center gap-4 mb-6 bg-gray-200 rounded">
         {/* Machine Dropdown */}
         <div className="flex flex-col w-full sm:w-1/3">
-          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">Máquina</label>
-          <select
-            value={selectedMachine}
-            onChange={(e) => setSelectedMachine(e.target.value)}
-            className="w-full h-[36px] pl-[8px] pr-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
-          >
-            <option value="" disabled>
-              Máquina
-            </option>
-            {machines.map((machine, index) => (
-              <option key={index} value={machine}>
-                {machine}
-              </option>
-            ))}
-          </select>
+        <SelectBox
+          label="Máquina"
+          options={machines}
+          value={selectedMachine}
+          onChange={(e) => setSelectedMachine(e.target.value)}
+          placeholder="Máquina"
+        />
         </div>
-
+       
         {/* Order Dropdown */}
-        <div className="flex flex-col w-full sm:w-1/3">
-          <label className="block text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-medium text-black mb-[2px]">Orden</label>
-          <select
-            value={selectedOrder}
-            onChange={(e) => setSelectedOrder(e.target.value)}
-            className="w-full h-[36px] px-[8px] bg-white text-xs outline-none font-normal text-gray-400 border border-gray-100 rounded"
-          >
-            <option value="" disabled>
-              Orden
-            </option>
-            {orders.map((order, index) => (
-              <option key={index} value={order}>
-                {order}
-              </option>
-            ))}
-          </select>
-        </div>
 
+
+        <div className="flex flex-col w-full sm:w-1/3">
+        <SelectBox
+          label="Orden"
+          options={orders}
+          value={selectedOrder}
+          onChange={(e) => setSelectedOrder(e.target.value)}
+          placeholder="Orden"
+        />
+        </div>
         {/* Button */}
         <div className="flex flex-col w-full sm:w-auto">
           <label className="invisible mb-1">Button</label>
@@ -93,9 +88,8 @@ export default function Orden() {
               <button
                 key={index}
                 onClick={() => handleTabChange(index)}
-                className={`text-[9px] font-normal px-2 py-2 rounded ${
-                  tabValue === index ? "bg-blue-580 text-white" : "text-gray-600"
-                }`}
+                className={`text-[9px] font-normal px-2 py-2 rounded ${tabValue === index ? "bg-blue-580 text-white" : "text-gray-600"
+                  }`}
               >
                 {label}
               </button>
@@ -136,7 +130,7 @@ export default function Orden() {
                     <>
                       <td className="px-4 py-2">{row.machine}</td>
                       <td colSpan={6} className="px-4 py-2 text-center">
-                      
+
                       </td>
                     </>
                   ) : (
